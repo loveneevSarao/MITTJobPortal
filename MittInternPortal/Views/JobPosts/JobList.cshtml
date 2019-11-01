@@ -1,0 +1,114 @@
+﻿@model IEnumerable<MittInternPortal.Models.JobPost>
+
+<h2>List of Jobs</h2>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JobList</title>
+
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+</head>
+<body class="col-md-12 ftco-animate">
+
+    <table id="table" class="display">
+        <thead>
+            <tr>
+                <th>
+                    Round
+                </th>
+
+                <th>
+                    Employer
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Position
+                </th>
+                <th>
+                    PostDate
+                </th>
+                <th>
+                    Description
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Round.Session)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Posted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "JobPosts", new { id = item.Id }, null) |
+                        @Html.ActionLink("Apply Now", "Apply", new { id = item.Id }) |
+
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    Round
+                </th>
+
+                <th>
+                    Employer
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Position
+                </th>
+                <th>
+                    PostDate
+                </th>
+                <th>
+                    Description
+                </th>
+
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        $(document).ready(function () {
+            $("#table").DataTable();
+
+        });
+    </script>
+</body>
+</html>

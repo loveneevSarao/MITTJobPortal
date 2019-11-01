@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MittInternPortal.Models.JobPost>
+@{
+    ViewBag.Title = "MyJobPost";
+}
+
+<h2>MyJobPost</h2>
+<table class=" table">
+    <tr>
+        <td class="c">
+            Role Name
+        </td>
+    </tr>
+    @foreach (var item in JobPosts)
+    {
+<tr>
+    <td class="c">
+        @item.EmployerId;
+    </td>
+    <td class="c">
+        @item.Description;
+    </td>
+</tr>
+    }
+</table>
